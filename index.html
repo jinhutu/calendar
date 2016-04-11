@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>我的HTML5+BootStrap3万年历</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- 引入 Bootstrap -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- 引入自定义样式 -->
+		<link rel="stylesheet" href="css/calendar.css">
+		<link rel="stylesheet" href="css/tabcal.css">
+		<link rel="stylesheet" href="css/jquery.selectlist.css">
+		<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+		<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+		<!--[if lt IE 9]>
+	        <script src="js/html5shiv.min.js"></script>
+	        <script src="js/respond.min.js"></script>
+      	<![endif]-->
+	</head>
+<body>
+	<div class="calendar">
+		<div id="CalendarMain">
+	    	<div id="title"> 
+	    		<a class="selectBtn month" onClick="dateSelection.goPrevMonth()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	    		<select id="selectYear"   class="selectBtn selectYear"  onChange="dateSelection.changeYear()"></select>
+	    		<select id="selectMonth"  class="selectBtn selectMonth" onChange="dateSelection.changeMonth()"></select>
+	    		<a id="footNow"></a>
+	    		<a class="selectBtn nextMonth"   onClick="dateSelection.goNextMonth()"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	    		<a class="selectBtn currentDay"  onClick="dateSelection.goToday();">今天</a>
+	    	</div>
+	    	<div id="context">
+	    		<table id="tabletitle">
+	                <tbody>
+	                <tr >
+	                    <td width="72px" style="color: red; ">日</td>
+	                    <td width="72px">一</td>
+	                    <td width="72px">二</td>
+	                    <td width="72px">三</td>
+	                    <td width="72px">四</td>
+	                    <td width="72px">五</TD>
+	                    <td width="72px" style="color: red ">六</td>
+	                </tr>
+	                <script language="JavaScript">
+	                    var gNum;
+	                    for (var i = 0; i < 6; i++) {
+	                        document.write('<tr align=center height="65px" style="padding: 0px;" id="tt">');
+	                        for (var j = 0; j < 7; j++) {
+	                            gNum = i * 7 + j ;
+	                            document.write('<td  id="GD' + gNum + '" style="height:65px;padding:0px" onclick="mouseClick(this,' + gNum + ');">' +
+	                            '<div style="height:63px"><div id="XS' + gNum + '" style="display:none;color:#fff;background-color:#D9534F;width:15px;height:15px;font-size:10px;line-height:15px;position:absolute;">'+ '休' +'</div>'+
+	                            '<font  id="SD' + gNum + '" style="font-size:22px;"  face="Arial"');
+	                            if (j == 0)  document.write('color=red');
+	                            if (j == 6)  document.write('color=red');
+	                            document.write('title=""></font><br><font  id="LD' + gNum + '"  size=1 color="grey" style="white-space:nowrap;overflow:hidden;cursor:default;">  </font><div></td>');
+	                        }
+	                        document.write('</tr>');
+	                    }
+	                </script>
+	                </tbody>
+	            </table>
+	    	</div>
+	  	</div>
+	  	<div class="rightdiv">
+	  		<div class="rdiv">
+	  			<div id="date" class="rdiv-date"></div>
+	  			<div id="day" class="rdiv-day"></div>
+	  			<div class="rdiv-p">
+	  				<p id="GLmonth"></p>
+		  			<p id="NLyear"></p>
+		  			<p id="NLmonth"></p>
+	  			</div>
+	  			<hr style="width: 130px;text-align: center;border-top:3px dashed #fff"/>
+	  			<div class="rdiv-bottom-left">
+	  				<div class="rdiv-left-yi">宜</div>
+	  				<div id="yi-content" class="rdiv-left-yi-content"></div>
+	  			</div>
+	  			<div class="rdiv-bottom-right">
+	  				<div class="rdiv-right-ji">忌</div>
+	  				<div id="ji-content" class="rdiv-right-ji-content"></div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<!--底部div 手机端-->
+<!--	  	<div id="details" class="bottomdiv visible-xs">
+	  		
+	  	</div>-->
+	</div>
+	<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+	<script src="js/jquery.min.js"></script>
+	<!-- 包括所有已编译的插件 -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/datedeal.js"></script>
+	<script src="js/jquery.selectlist.js"></script>
+</body>
+</html>
